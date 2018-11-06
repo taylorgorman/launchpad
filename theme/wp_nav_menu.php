@@ -5,7 +5,7 @@
 add_filter( 'wp_nav_menu_args', function( $args ){
 
 	// Better defaults
-	$args['container']    = 'nav';
+	if ( $args['container'] !== false ) $args['container'] = 'nav';
 	$args['fallback_cb']  = '__return_false';
 	$args['container_id'] = 'menu-location-'.$args['theme_location'];
 

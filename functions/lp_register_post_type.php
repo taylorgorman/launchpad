@@ -2,7 +2,7 @@
 /*
 ** Register post type
 */
-function bs_register_post_type( $args ) {
+function lp_register_post_type( $args ) {
 
 	$v = wp_parse_args( $args, array(
 		'ID'            => ''
@@ -78,7 +78,7 @@ function bs_register_post_type( $args ) {
 	} $v['arguments']['supports'] = $v['supports'];
 
 	// Go go gadget
-	add_action( 'init', function($v) use ($v){
+	add_action( 'init', function() use ($v){
 		register_post_type( $v['ID'], $v['arguments'] );
 	} );
 

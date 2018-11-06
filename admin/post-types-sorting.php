@@ -1,8 +1,10 @@
 <?php
 /*
-** Sort posts by occur date
-** Ascending order
-** Date is higher than right now
+** Sort posts by blank slate setting
+**
+** TO DO:
+**      : Change text box to select. Fill with standard post orderby columns, then dig up that post type's post_meta.
+**      : Add taxonomy archives to the list. When adding post_meta to the select, ditch ones that aren't common among the taxonomy's post types (if more than one post type).
 */
 add_filter( 'pre_get_posts', function( $query ){
 

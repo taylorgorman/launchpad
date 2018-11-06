@@ -1,24 +1,58 @@
 <?php
 /*
+** Add checkboxes to Launchpad settings screen
+*/
+add_filter( 'launchpad_settings_fields', function( $fields ){
+
+	$fields[] = [
+		'type'    => 'checkbox',
+		'label'   => 'Post formats',
+		'options' => [
+			[
+				'label' => '<i class="dashicons dashicons-format-aside"></i> Aside'
+			],
+			[
+				'label' => '<i class="dashicons dashicons-format-gallery"></i> Gallery'
+			],
+			[
+				'label' => '<i class="dashicons dashicons-admin-links"></i> Link'
+			],
+			[
+				'label' => '<i class="dashicons dashicons-format-image"></i> Image'
+			],
+			[
+				'label' => '<i class="dashicons dashicons-format-quote"></i> Quote'
+			],
+			[
+				'label' => '<i class="dashicons dashicons-format-video"></i> Video'
+			],
+			[
+				'label' => '<i class="dashicons dashicons-format-audio"></i> Audio'
+			],
+		],
+	];
+
+	return $fields;
+
+} );
+
+/*
 ** Add theme supports
 **
 ** #hookable
 */
 add_action( 'after_setup_theme', function(){
 
-	$default_features = array(
+	$features = array(
 		'post-thumbnails'      => true
 	,	'menus'                => true
 	,	'html5'                => array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'widgets' )
 	);
 
-	// Add post formats based on Blank Slate Settings
-	$bs_settings = get_option('blank_slate');
-	if ( ! empty($bs_settings['post-formats']) && is_array($bs_settings['post-formats']) )
-		$default_features['post-formats'] = $bs_settings['post-formats'];
-
-	// Allow site core plugin to modify features
-	$features = apply_filters( 'bs_theme_support', $default_features );
+	// Add post formats from Launchpad settings
+	$lp_settings = get_option('launchpad');
+	if ( ! empty($lp_settings['post-formats']) && is_array($lp_settings['post-formats']) )
+		$features['post-formats'] = $lp_settings['post-formats'];
 
 	// Bail if no features
 	if ( empty($features) || ! is_array($features) )

@@ -33,6 +33,10 @@ function bs_post_class( $classes ){
 	foreach ( $terms as $term )
 		$classes = bs_term_classes( $term, $classes );
 
+	// Add post template
+	if ( get_page_template_slug($post) )
+		$classes[] = 'template-'. str_ireplace( '.php', '', get_page_template_slug($post) );
+
 	return array_unique($classes);
 
 }
@@ -46,6 +50,12 @@ function bs_post_class( $classes ){
 function bs_term_classes( $term, $classes ) {
 
 	do {
+
+		// Change 'post_tag' to 'tag' to match post_class
+		if ( $term->taxonomy == 'post_tag' ) $term->taxonomy = 'tag';
+
+		// Remove 'cap-' from beginning of author slug
+		if ( $term->taxonomy == 'author' ) $term->slug = str_replace( 'cap-', '', $term->slug );
 
 		// Add the passed term
 		$classes[] = sprintf( '%s-%s', $term->taxonomy, $term->slug );

@@ -2,7 +2,7 @@
 /*
 ** Register taxonomy
 */
-function bs_register_taxonomy( $args ) {
+function lp_register_taxonomy( $args ) {
 
 	$v = wp_parse_args( $args, array(
 		'ID'            => ''
@@ -58,7 +58,7 @@ function bs_register_taxonomy( $args ) {
 	) );
 
 	// Go go gadget
-	add_action( 'init', function($v) use ($v){
+	add_action( 'init', function() use ($v){
 		register_taxonomy( $v['ID'], $v['post_types'], $v['arguments'] );
 	});
 

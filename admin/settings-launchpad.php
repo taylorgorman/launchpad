@@ -65,51 +65,27 @@ add_submenu_page( 'options-general.php', 'Launchpad Settings', 'Launchpad', 'man
 		/*
 		** Generate form fields
 		*/
+		$launchpad_settings_fields = [
+			[
+				'type' => 'checkbox',
+				'label' => 'Allow page comments',
+			],
+			[
+				'type'   => 'custom',
+				'label'  => 'Post types sorting',
+				'markup' => $post_types_sorting_markup,
+			]
+		];
+
+		$launchpad_settings_fields = apply_filters( 'launchpad_settings_fields', $launchpad_settings_fields );
+
 		admin_fields([
 			'before_fields' => '<table class="form-table">',
 			'during_fields' => '<tr><th>%1$s</th><td><fieldset>%2$s%3$s</fieldset></td></tr>',
 			'after_fields'  => '</table>',
 			'group_name'    => 'launchpad',
 			'group_value'   => $launchpad_db,
-			'fields'        => [
-				[
-					'type' => 'checkbox',
-					'label' => 'Allow page comments',
-				],
-				[
-					'type' => 'checkbox',
-					'label' => 'Layout classes',
-				],
-				[
-					'type'    => 'checkbox',
-					'label'   => 'Post formats',
-					'options' => [
-						[
-							'label' => '<i class="dashicons dashicons-format-gallery"></i> Gallery'
-						],
-						[
-							'label' => '<i class="dashicons dashicons-admin-links"></i> Link'
-						],
-						[
-							'label' => '<i class="dashicons dashicons-format-image"></i> Image'
-						],
-						[
-							'label' => '<i class="dashicons dashicons-format-quote"></i> Quote'
-						],
-						[
-							'label' => '<i class="dashicons dashicons-format-video"></i> Video'
-						],
-						[
-							'label' => '<i class="dashicons dashicons-format-audio"></i> Audio'
-						],
-					],
-				],
-				[
-					'type'   => 'custom',
-					'label'  => 'Post types sorting',
-					'markup' => $post_types_sorting_markup,
-				]
-			]
+			'fields'        => $launchpad_settings_fields
 		]);
 
 		submit_button();

@@ -4,7 +4,7 @@
 **
 ** @param  $args (array)
 */
-function bs_list_contextually( $args = array() ) {
+function lp_list_contextually( $args = array() ) {
 
 	if ( is_404() )
 		return;

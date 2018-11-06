@@ -16,10 +16,10 @@ add_filter( 'user_contactmethods', function($fields) {
 
 	// Add fields
 	$add = apply_filters('bs_add_user_fields', array(
-		'facebook' => 'Facebook',
-		'googleplus' => 'Google+',
-		'linkedin' => 'LinkedIn',
-		'twitter' => 'Twitter'
+		'facebook' => 'Facebook URL',
+		'instagram' => 'Instagram username',
+		'twitter' => 'Twitter username',
+		'linkedin' => 'LinkedIn URL',
 	));
 
 	$fields = array_merge($fields, $add);

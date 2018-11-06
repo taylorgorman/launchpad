@@ -3,7 +3,10 @@
 ** Get Jetpack's related posts
 ** You'll have to elsewhere turn off Jetpack's automatic insertion into the content
 */
-function get_jetpack_related_posts( ) {
+function get_jetpack_related_posts( $numberposts = 3, $postID = null ) {
+
+	if ( empty($postID) )
+		$postID = get_the_ID();
 
 	// Bail if we don't have Jetpack
 	if ( ! class_exists( 'Jetpack_RelatedPosts' ) || ! method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) )
@@ -12,7 +15,7 @@ function get_jetpack_related_posts( ) {
 	// Get related post IDs
 	$jrp_raw = Jetpack_RelatedPosts::init_raw()
 		->set_query_name( 'jetpack-related-posts' )
-		->get_for_post_id( get_the_ID(), [ 'size' => 3 ] );
+		->get_for_post_id( $postID, [ 'size' => $numberposts ] );
 
 	// Bail if we don't have related posts
 	if ( empty($jrp_raw) )
@@ -24,7 +27,7 @@ function get_jetpack_related_posts( ) {
 	// Get the posts
 	$related = get_posts([
 		'include'     => $related_IDs
-	, 'numberposts' => 3
+	, 'numberposts' => $numberposts
 	]);
 
 	return $related;

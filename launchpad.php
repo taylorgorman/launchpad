@@ -19,7 +19,6 @@ define( 'LP_IS_LOCAL', $_SERVER['SERVER_NAME'] == 'localhost' );
 define( 'LP_PATH', plugin_dir_path(__FILE__) );
 define( 'LP_URL', plugin_dir_url(__FILE__) );
 
-
 /*
 ** Settings
 */
@@ -32,10 +31,10 @@ $lp = get_option('launchpad');
 */
 require_once 'functions/get_post_thumbnail_url.php';
 require_once 'functions/highest_ancestor.php';
-require_once 'functions/bs_list_contextually.php';
-require_once 'functions/bs_paginate_links.php';
-require_once 'functions/bs_register_post_type.php';
-require_once 'functions/bs_register_taxonomy.php';
+require_once 'functions/lp_list_contextually.php';
+require_once 'functions/lp_paginate_links.php';
+require_once 'functions/lp_register_post_type.php';
+require_once 'functions/lp_register_taxonomy.php';
 require_once 'functions/date_range.php';
 require_once 'functions/minutes_to_read.php';
 require_once 'functions/is_any_tax.php';
@@ -58,8 +57,7 @@ require_once 'admin/dashboard-widgets.php';
 require_once 'admin/media.php';
 require_once 'admin/users.php';
 require_once 'admin/post-types-sorting.php';
-if ( ! empty($lp['layout-classes']) )
-	require_once 'admin/layouts.php';
+require_once 'admin/layouts.php';
 
 //require_once 'admin/new-user-email.php';
 //require_once 'admin/featured-icon.php';
@@ -68,6 +66,7 @@ if ( ! empty($lp['layout-classes']) )
 ** Add widgets
 */
 require_once 'widgets/section-navigation.php';
+require_once 'widgets/jp-related-posts.php';
 
 /*
 ** Modify theme output
