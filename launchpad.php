@@ -71,7 +71,6 @@ require_once 'widgets/jp-related-posts.php';
 /*
 ** Modify theme output
 */
-require_once 'theme/wp_nav_menu.php';
 require_once 'theme/meta.php';
 require_once 'theme/wp_head.php';
 require_once 'theme/scripts.php';
