@@ -51,6 +51,7 @@ add_action( 'activated_plugin', function(){
 // Global
 //
 require 'lib/setup.php';
+require 'lib/util.php';
 
 // Back-end
 // TO DO: admin fields from.. roundabout?
