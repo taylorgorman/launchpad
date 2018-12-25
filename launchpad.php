@@ -81,18 +81,18 @@ require_once 'admin/users.php';
 // TO DO: Do we even need images.php?
 // TO DO: Post format meta with Gutenburg? Or still need to provide?
 //
+require_once 'public/classes.php';
+require_once 'public/content.php';
+require_once 'public/date-range.php';
+require_once 'public/excerpt.php';
+require_once 'public/get-jetpack-related-posts.php';
+require_once 'public/images.php';
 require_once 'public/lp-register-post-type.php';
 require_once 'public/lp-register-taxonomy.php';
 require_once 'public/minutes-to-read.php';
-require_once 'public/date-range.php';
-require_once 'public/get-jetpack-related-posts.php';
 require_once 'public/the-field-markup.php';
-require_once 'public/wp-head.php';
-require_once 'public/excerpt.php';
-require_once 'public/content.php';
-require_once 'public/classes.php';
 require_once 'public/theme-support.php';
-require_once 'public/images.php';
+require_once 'public/wp-head.php';
 
 //if ( ! empty( $lp['post-formats'] ) )
 //	require_once 'public/format-meta.php';
