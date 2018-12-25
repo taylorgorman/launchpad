@@ -1,24 +1,27 @@
 <?php
-/*
-** Minutes to read
-** Determines how many minutes an average reader would take to read a given string.
-**
-** Could maybe add an argument to override the words per minute setting.
-** Or a filter so could be changed site-wide.
-** Or a setting in WP? Seems overkill.
-*/
-function minutes_to_read( $string='' ) {
+
+// Determines how many minutes an average reader would take to read a given string.
+// Can override with filter or argument
+//
+function minutes_to_read( $string, $wpm = false ) {
 
 	// Slightly below average words per minute
-	$wpm = 200;
+	if ( ! $wpm )
+		$wpm = apply_filters( 'words_per_minute_to_read', 200 );
+
+	// Sanitize
+	$string = strval( $string );
+	$wpm = intval( $wpm );
 
 	// Strip everything but words
-	$string = strip_tags(strip_shortcodes($string));
+	$string = strip_shortcodes( $string );
+	$string = strip_tags( $string );
 
-	// Find number of words, calculate minutes to read
+	// Number of words
 	$words = explode( ' ', $string );
-	$mtr = count($words) / $wpm;
+	// Minutes to read
+	$mtr = count( $words ) / $wpm;
 
-	return ceil($mtr);
+	return ceil( $mtr );
 
 }

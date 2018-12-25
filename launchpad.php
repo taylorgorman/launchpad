@@ -54,9 +54,10 @@ require 'lib/setup.php';
 require 'lib/util.php';
 
 // Back-end
+//
 // TO DO: admin fields from.. roundabout?
 // TO DO: Are settings pages using settings api?
-// TO DO: Make post type sorting better
+// TO DO: Delete post type sorting - gotta set it up in code anyway
 //
 require_once 'admin/assets.php';
 require_once 'admin/admin-fields.php';
@@ -73,18 +74,19 @@ require_once 'admin/post-types-sorting.php';
 
 // Front-end
 //
+// TO DO: Test get_jetpack_related_posts
+// TO DO: Check classes.php
+// TO DO: Check theme-support.php
+// TO DO: Put post format checkboxes in Settings/Writing
+// TO DO: Do we even need images.php?
+//
 require_once 'public/lp-register-post-type.php';
 require_once 'public/lp-register-taxonomy.php';
-require_once 'public/get-post-thumbnail-url.php';
 require_once 'public/minutes-to-read.php';
 require_once 'public/date-range.php';
-require_once 'public/get-adjacent-page.php';
-require_once 'public/is-any-tax.php';
 require_once 'public/get-jetpack-related-posts.php';
 require_once 'public/the-field-markup.php';
-require_once 'public/meta.php';
 require_once 'public/wp-head.php';
-require_once 'public/scripts.php';
 require_once 'public/excerpt.php';
 require_once 'public/content.php';
 require_once 'public/classes.php';
