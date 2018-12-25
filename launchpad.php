@@ -67,7 +67,6 @@ require_once 'admin/menu.php';
 require_once 'admin/media.php';
 require_once 'admin/users.php';
 require_once 'admin/post-types-sorting.php';
-require_once 'admin/layouts.php';
 //require_once 'admin/new-user-email.php';
 //require_once 'admin/featured-icon.php';
 
