@@ -57,6 +57,8 @@ require 'lib/util.php';
 //
 // TO DO: admin fields from.. roundabout?
 // TO DO: Are settings pages using settings api?
+// TO DO: Remove Launchpad settings screen - plugin should be invisible
+// TO DO: Admin setting for seeing other's media. Plenty of sites would need to reuse media between authors.
 //
 require_once 'admin/assets.php';
 require_once 'admin/admin-fields.php';
@@ -77,6 +79,7 @@ require_once 'admin/users.php';
 // TO DO: Check theme-support.php
 // TO DO: Put post format checkboxes in Settings/Writing
 // TO DO: Do we even need images.php?
+// TO DO: Post format meta with Gutenburg? Or still need to provide?
 //
 require_once 'public/lp-register-post-type.php';
 require_once 'public/lp-register-taxonomy.php';
