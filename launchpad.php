@@ -60,14 +60,14 @@ require 'lib/util.php';
 // TO DO: Remove Launchpad settings screen - plugin should be invisible
 // TO DO: Admin setting for seeing other's media. Plenty of sites would need to reuse media between authors.
 //
-require_once 'admin/assets.php';
 require_once 'admin/admin-fields.php';
-require_once 'admin/settings-launchpad.php';
-require_once 'admin/settings-contact.php';
-require_once 'admin/roles.php';
-require_once 'admin/page.php';
-require_once 'admin/menu.php';
+require_once 'admin/assets.php';
 require_once 'admin/media.php';
+require_once 'admin/menu.php';
+require_once 'admin/page.php';
+require_once 'admin/post-formats.php';
+require_once 'admin/roles.php';
+require_once 'admin/settings-contact.php';
 require_once 'admin/users.php';
 //require_once 'admin/new-user-email.php';
 //require_once 'admin/featured-icon.php';
