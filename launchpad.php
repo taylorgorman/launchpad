@@ -2,7 +2,7 @@
 /*
 **  Plugin Name:  Launchpad
 **  Plugin URI:   http://taylorpatrickgorman.com/wordpress-plugins/launchpad
-**  Version:      1.0.0
+**  Version:      2.0.0
 **  Description:  Configures WordPress to a predetermined base
 **  Author:       Taylor Gorman
 **  Author URI:   http://taylorpatrickgorman.com
@@ -11,6 +11,7 @@
 **  License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 */
 
+// DON'T FORGET to change version number in lib/setup.php as well.
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) die;
@@ -52,6 +53,9 @@ add_action( 'activated_plugin', function(){
 require 'lib/setup.php';
 
 // Back-end
+// TO DO: admin fields from.. roundabout?
+// TO DO: Are settings pages using settings api?
+// TO DO: Make post type sorting better
 //
 require_once 'admin/assets.php';
 require_once 'admin/admin-fields.php';
@@ -60,8 +64,6 @@ require_once 'admin/settings-contact.php';
 require_once 'admin/roles.php';
 require_once 'admin/page.php';
 require_once 'admin/menu.php';
-require_once 'admin/tinymce.php';
-require_once 'admin/dashboard-widgets.php';
 require_once 'admin/media.php';
 require_once 'admin/users.php';
 require_once 'admin/post-types-sorting.php';
