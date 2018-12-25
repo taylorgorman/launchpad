@@ -67,7 +67,7 @@ Display an ACF field with optional markup, similar to WordPress functions like t
 
 #### `get_trimmed_excerpt( int $length = 0, int|WP_Post $post = null )`
 
-Returns <p> wrapped string of excerpt or content trimmed to $length, which falls back to 'excerpt_length' filter, ammended with 'excerpt_more' filter. $post defaults to current if in loop. Because the_excerpt() trims content, but not excerpt and get_the_excerpt() doesn't truncate and doesn't output <p>.
+Returns &lt;p&gt; wrapped string of excerpt or content trimmed to $length, which falls back to 'excerpt_length' filter, ammended with 'excerpt_more' filter. $post defaults to current if in loop. Because the_excerpt() trims content, but not excerpt and get_the_excerpt() doesn't truncate and doesn't output &lt;p&gt;.
 
 ## Hooks
 
