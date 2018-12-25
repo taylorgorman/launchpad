@@ -20,3 +20,14 @@ function name() {
 	return 'launchpad';
 
 }
+
+function option( $name ) {
+
+	$options = get_option( name() );
+
+	if ( empty( $options[$name] ) )
+		return false;
+	else
+		return $options[ $name ];
+
+}
