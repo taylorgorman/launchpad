@@ -1,5 +1,8 @@
 <?php
 
+use Launchpad\Utilities;
+
+
 // Register post type with sane defaults
 //
 function lp_register_post_type( $args ) {
@@ -11,7 +14,7 @@ function lp_register_post_type( $args ) {
 		'args'          => [],
 	] );
 
-	// Singular name is essential
+	// Singular name is required
 	if ( empty( $v['singular_name'] ) )
 		return false;
 
@@ -34,7 +37,7 @@ function lp_register_post_type( $args ) {
 		$supports[] = 'page-attributes';
 
 	// Merge defaults
-	$arguments = wp_parse_args_deep( $v['args'], [
+	$arguments = Utilities\wp_parse_args_deep( $v['args'], [
 		'labels'          => [
 			'name'               => $v['plural_name'],
 			'singular_name'      => $v['singular_name'],
