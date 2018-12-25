@@ -1,8 +1,5 @@
 <?php
 
-use Launchpad\Utilities;
-
-
 // Register taxonomy with sane defaults
 //
 function lp_register_taxonomy( $args ) {
@@ -27,7 +24,7 @@ function lp_register_taxonomy( $args ) {
 		$v['plural_name'] = $v['singular_name'] . 's';
 
 	// Register taxonomy arguments
-	$arguments = Utilities\wp_parse_args_deep( $v['args'], [
+	$arguments = wp_parse_args_deep( $v['args'], [
 		'labels'            => [
 			'name'                       => $v['plural_name'],
 			'singular_name'              => $v['singular_name'],

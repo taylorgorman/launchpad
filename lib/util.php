@@ -1,8 +1,5 @@
 <?php
 
-namespace Launchpad\Utilities;
-
-
 // https://mekshq.com/recursive-wp-parse-args-wordpress-function/
 //
 function wp_parse_args_deep( &$a, $b ) {
