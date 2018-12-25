@@ -57,7 +57,6 @@ require 'lib/util.php';
 //
 // TO DO: admin fields from.. roundabout?
 // TO DO: Are settings pages using settings api?
-// TO DO: Delete post type sorting - gotta set it up in code anyway
 //
 require_once 'admin/assets.php';
 require_once 'admin/admin-fields.php';
@@ -68,7 +67,6 @@ require_once 'admin/page.php';
 require_once 'admin/menu.php';
 require_once 'admin/media.php';
 require_once 'admin/users.php';
-require_once 'admin/post-types-sorting.php';
 //require_once 'admin/new-user-email.php';
 //require_once 'admin/featured-icon.php';
 
