@@ -12,7 +12,7 @@
  * @since 1.0
  */
 
-function date_range($start_date = '',$end_date = '') {
+function date_range( $start_date = '', $end_date = '' ) {
 
     $date_range = '';
 
