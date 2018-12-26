@@ -1,7 +1,8 @@
 <?php
 
+// Post formats checkboxes on Settings/Writing
+//
 add_action( 'admin_init', 'post_formats_setting' );
-
 function post_formats_setting(){
 
 	register_setting( 'writing', 'post-formats' );
@@ -11,17 +12,29 @@ function post_formats_setting(){
 		'Post Formats',
 		function(){
 
-	    $option = get_option( 'post-formats' );
-
+			// Wrap in a div
 			echo '<div style="max-width:34em">';
-			foreach ( ['aside', 'gallery', 'links', 'image', 'quote', 'video', 'audio'] as $format ) {
-				?>
-				<label style="display:inline-block;padding:3px 0;width:49%;">
-					<input type="checkbox" name="post-formats[]" value="<?php echo esc_attr( $format ); ?>" <?php checked( is_array( $option ) ? in_array( $format, $option ) : false ); ?>>
-					&nbsp; <i class="dashicons dashicons-format-<?php echo esc_attr( $format ); ?>"></i> &nbsp; <?php echo ucwords( $format ); ?>
-				</label>
-				<?php
+
+			// Collect checkbox settings
+	    $option = get_option( 'post-formats' );
+			$field_options = [];
+			foreach ( ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'] as $format ) {
+
+				$field_options[] = [
+					'value'   => $format,
+					'label'   => ' <i class="dashicons dashicons-format-' . $format . '"></i> ' . ucwords( $format ),
+					'checked' => checked( is_array( $option ) ? in_array( $format, $option ) : false, true, false ),
+				];
+
 			}
+
+			// Show admin fields
+			admin_field([
+				'id'    => 'post-formats',
+				'type'  => 'checkbox',
+				'options' => $field_options,
+			]);
+
 			echo '</div>';
 
 		},
@@ -31,6 +44,8 @@ function post_formats_setting(){
 
 }
 
+// Register post formats
+//
 add_action( 'after_setup_theme', function(){
 
 	$option = get_option( 'post-formats' );
