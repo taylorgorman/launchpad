@@ -55,8 +55,7 @@ require 'lib/util.php';
 
 // Back-end
 //
-// TO DO: admin fields from.. roundabout?
-// TO DO: Are settings pages using settings api?
+// TO DO: Is Settings/Contact using Settings API?
 // TO DO: Admin setting for seeing other's media. Plenty of sites would need to reuse media between authors.
 //
 require_once 'admin/admin-field.php';
