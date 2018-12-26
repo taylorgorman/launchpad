@@ -59,7 +59,7 @@ require 'lib/util.php';
 // TO DO: Are settings pages using settings api?
 // TO DO: Admin setting for seeing other's media. Plenty of sites would need to reuse media between authors.
 //
-require_once 'admin/admin-fields.php';
+require_once 'admin/admin-field.php';
 require_once 'admin/assets.php';
 require_once 'admin/media.php';
 require_once 'admin/menu.php';
