@@ -18,12 +18,41 @@ function post_formats_setting(){
 			// Collect checkbox settings
 	    $option = get_option( 'post-formats' );
 			$field_options = [];
-			foreach ( ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'] as $format ) {
+			foreach ( [
+				[
+					'dashicons' => 'format-aside',
+					'name' => 'aside',
+				],
+				[
+					'dashicons' => 'format-gallery',
+					'name' => 'gallery',
+				],
+				[
+					'dashicons' => 'format-links',
+					'name' => 'link',
+				],
+				[
+					'dashicons' => 'format-image',
+					'name' => 'image',
+				],
+				[
+					'dashicons' => 'format-quote',
+					'name' => 'quote',
+				],
+				[
+					'dashicons' => 'format-video',
+					'name' => 'video',
+				],
+				[
+					'dashicons' => 'format-audio',
+					'name' => 'audio',
+				],
+			] as $format ) {
 
 				$field_options[] = [
-					'value'   => $format,
-					'label'   => ' <i class="dashicons dashicons-format-' . $format . '"></i> ' . ucwords( $format ),
-					'checked' => checked( is_array( $option ) ? in_array( $format, $option ) : false, true, false ),
+					'value'   => $format['name'],
+					'label'   => ' <i class="dashicons dashicons-' . $format['dashicons'] . '"></i> ' . ucwords( $format['name'] ),
+					'checked' => checked( is_array( $option ) ? in_array( $format['name'], $option ) : false, true, false ),
 				];
 
 			}
@@ -35,6 +64,7 @@ function post_formats_setting(){
 				'options' => $field_options,
 			]);
 
+			// Wrap div
 			echo '</div>';
 
 		},
