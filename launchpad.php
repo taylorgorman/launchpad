@@ -57,6 +57,7 @@ require 'lib/util.php';
 //
 // TO DO: Is Settings/Contact using Settings API?
 // TO DO: Admin setting for seeing other's media. Plenty of sites would need to reuse media between authors.
+// TO DO: Post format meta with Gutenburg? Or still need to provide?
 //
 require_once 'admin/admin-field.php';
 require_once 'admin/assets.php';
@@ -74,9 +75,7 @@ require_once 'admin/users.php';
 //
 // TO DO: Test get_jetpack_related_posts
 // TO DO: Check classes.php
-// TO DO: Put post format checkboxes in Settings/Writing
 // TO DO: Do we even need images.php?
-// TO DO: Post format meta with Gutenburg? Or still need to provide?
 //
 require_once 'public/classes.php';
 require_once 'public/content.php';
