@@ -68,6 +68,7 @@ require_once 'admin/page.php';
 require_once 'admin/post-formats.php';
 require_once 'admin/roles.php';
 require_once 'admin/settings-contact.php';
+require_once 'admin/theme-support.php';
 require_once 'admin/users.php';
 //require_once 'admin/new-user-email.php';
 //require_once 'admin/featured-icon.php';
@@ -91,7 +92,6 @@ require_once 'public/lp-register-post-type.php';
 require_once 'public/lp-register-taxonomy.php';
 require_once 'public/minutes-to-read.php';
 require_once 'public/the-field-markup.php';
-require_once 'public/theme-support.php';
 require_once 'public/wp-head.php';
 
 //if ( ! empty( $lp['post-formats'] ) )
