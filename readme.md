@@ -34,7 +34,7 @@ Register post type with sane defaults.
 
 - **$args**
   - **'id'** _(int)_ Post type name. Default is lowercase hyphened $singular_name.
-   - **'singular_name'** _(string) (Required)_ Uppercased singular name of post type.
+  - **'singular_name'** _(string) (Required)_ Uppercased singular name of post type.
   - **'plural_name'** _(string)_ Uppercased plural name of post type. Default is $singular_name with an 's'.
   - **'args'** _(array)_ Passed directly to register_post_type( $args ) after being merged with sane defaults. Start with passing nothing to this then adding what's missing for you.
 
@@ -44,8 +44,8 @@ Register post type with sane defaults.
 
 - **$args**
   - **'id'** _(int)_ Taxonomy name. Default is lowercase hyphened $singular_name.
-   - **'post_types'** _(array|string) (Required)_ Passed directly to register_taxonomy( $object_type ).
-   - **'singular_name'** _(string) (Required)_ Uppercased singular name of taxonomy.
+  - **'post_types'** _(array|string) (Required)_ Passed directly to register_taxonomy( $object_type ).
+  - **'singular_name'** _(string) (Required)_ Uppercased singular name of taxonomy.
   - **'plural_name'** _(string)_ Uppercased plural name of taxonomy. Default is $singular_name with an 's'.
   - **'args'** _(array)_ Passed directly to register_taxonomy( $args ) after being merged with sane defaults. Start with passing nothing to this then adding what's missing for you.
 
@@ -71,4 +71,6 @@ Returns &lt;p&gt; wrapped string of excerpt or content trimmed to $length, which
 
 ## Hooks
 
-#### `apply_filters( 'words_per_minute_to_read', int $wpm )`
+#### `apply_filters( 'words_per_minute_to_read', int $wpm = 200 )`
+
+Globally change the words per minute for the `minutes_to_read()` function.
