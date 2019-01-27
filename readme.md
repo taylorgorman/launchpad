@@ -18,15 +18,17 @@ Tightens up really basic WordPress settings and UI, provides extra developer fun
 - Prevent empty paragraphs around shortcodes
 - Add post slug, terms, post template to post_class() and body_class()
 - Add theme support for post thumbnails, post formats, menus, HTML5
-- Add more image sizes (this is probably going away)
+- Add editable image sizes: Small, XLarge, Open Graph
+- Setting in Settings/Media to prevent Authors and below from seeing others' media
+- Remove extra image sizes added by CoAuthors plugin
 
 ## Helper Functions
 
-#### `wp_parse_args_deep( array $args, array $defaults )`
-
-Like wp_parse_args() but recursive. Pretty sure this only works with arrays.
-
 #### `admin_fields( array $args )`
+
+#### `date_range( string $start_date, string $end_date )`
+
+Honestly can't remember exactly what this does or returns.
 
 #### `lp_register_post_type( array $args )`
 
@@ -53,24 +55,28 @@ Register post type with sane defaults.
 
 Returns integer. Can override site-wide with 'words_per_minute_to_read' filter.
 
-#### `date_range( string $start_date, string $end_date )`
-
-Honestly can't remember exactly what this does or returns.
-
 #### `get_jetpack_related_posts( int $numberposts = 3, int $postID = null )`
 
 Returns array of post objects. $postID defaults to current if in loop.
+
+#### `get_trimmed_excerpt( int $length = 0, int|WP_Post $post = null )`
+
+Returns &lt;p&gt; wrapped string of excerpt or content trimmed to $length, which falls back to 'excerpt_length' filter, ammended with 'excerpt_more' filter. $post defaults to current if in loop. Because the_excerpt() trims content, but not excerpt and get_the_excerpt() doesn't truncate and doesn't output &lt;p&gt;.
 
 #### `the_field_markup( int $field_id, string $before = '', string $after = '' )`
 
 Display an ACF field with optional markup, similar to WordPress functions like the_title().
 
-#### `get_trimmed_excerpt( int $length = 0, int|WP_Post $post = null )`
+#### `wp_parse_args_deep( array $args, array $defaults )`
 
-Returns &lt;p&gt; wrapped string of excerpt or content trimmed to $length, which falls back to 'excerpt_length' filter, ammended with 'excerpt_more' filter. $post defaults to current if in loop. Because the_excerpt() trims content, but not excerpt and get_the_excerpt() doesn't truncate and doesn't output &lt;p&gt;.
+Like wp_parse_args() but recursive. Pretty sure this only works with arrays.
 
 ## Hooks
 
 #### `apply_filters( 'words_per_minute_to_read', int $wpm = 200 )`
 
 Globally change the words per minute for the `minutes_to_read()` function.
+
+#### `apply_filters( 'ls_new_image_sizes', array $sizes )`
+
+Modify the image sizes added by Launchpad, which are small, xlarge, and open_graph.

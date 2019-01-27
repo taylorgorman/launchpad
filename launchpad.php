@@ -50,14 +50,17 @@ add_action( 'activated_plugin', function(){
 
 // Global
 //
-require 'lib/setup.php';
-require 'lib/util.php';
+require_once 'lib/setup.php';
+require_once 'lib/util.php';
 
 // Back-end
 //
-// TO DO: Is Settings/Contact using Settings API?
-// TO DO: Admin setting for seeing other's media. Plenty of sites would need to reuse media between authors.
-// TO DO: Post format meta with Gutenburg? Or still need to provide?
+// TO DO: settings-contact.php: Is Settings/Contact using Settings API?
+// TO DO: post-formats.php: Post format meta with Gutenburg? Or still need to provide?
+// TO DO: media/sizes.php: Update default image sizes on plugin activation
+// TO DO: media/sizes.php: Register new image sizes on plugin activation? Instead of every admin page load?
+// TO DO: media/sizes.php: Remove CoAuthors sizes removal, let themes and other plugins do this
+// TO DO: media/sizes.php: Change ls_new_image_sizes filter to give and receive size names only. Width and height should only be set on admin screen
 //
 require_once 'admin/admin-field.php';
 require_once 'admin/assets.php';
