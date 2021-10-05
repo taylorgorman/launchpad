@@ -59,6 +59,7 @@ require_once 'admin/media-permissions.php';
 // TO DO: Change ls_new_image_sizes filter to give and receive size names only. Width and height should only be set on admin screen
 require_once 'admin/media-sizes.php';
 require_once 'admin/menu.php';
+//require_once 'admin/new-user-email.php';
 require_once 'admin/page.php';
 // TO DO: post-formats.php: Post format meta with Gutenburg? Or still need to provide?
 require_once 'admin/post-formats.php';
@@ -67,7 +68,6 @@ require_once 'admin/roles.php';
 require_once 'admin/settings-contact.php';
 require_once 'admin/theme-support.php';
 require_once 'admin/users.php';
-//require_once 'admin/new-user-email.php';
 
 // Front-end
 require_once 'public/excerpt.php';

@@ -5,17 +5,18 @@ Tightens up really basic WordPress settings and UI, provides extra developer fun
 
 ## Changes
 
-- Contact settings screen for company name, email, address, social networks, and more. Up to theme to implement.
-- Allow Editor role to edit theme options
-- Add excerpt to pages
-- Remove theme and plugin edit menu items
-- Move media below post types in menu
-- Don't let user see other's media if they can't edit other's posts
-- Setting in Settings/Media to prevent Authors and below from seeing others' media
-- Add user fields for Instagram username, Facebook URL, Twitter username, Linkedin URL
-- Add theme support for post thumbnails, post formats, menus, HTML5
+- Add setting in Settings/Media to prevent Authors and below from seeing others' media
+- Don't let user see other's media if they can't edit other's posts (according to above setting)
 - Add editable image sizes: Small, XLarge, Open Graph
 - Remove extra image sizes added by CoAuthors plugin
+- Move media below post types in menu
+- Remove theme and plugin edit menu items
+- Add excerpt to pages
+- Allow Editor role to edit theme options
+- Contact settings screen for company name, email, address, social networks, and more. Up to theme to implement.
+- Add theme support for post thumbnails, post formats, menus, HTML5
+- Add user fields for Instagram username, Facebook URL, Twitter username, Linkedin URL
+- Remove user fields for AIM, YIM, and Jabber
 - Change excerpt length to 25 words
 - Allow shortcodes in excerpts
 
