@@ -51,7 +51,6 @@ add_action( 'activated_plugin', function(){
 // Global
 //
 require_once 'lib/setup.php';
-require_once 'lib/util.php';
 
 // Back-end
 //
