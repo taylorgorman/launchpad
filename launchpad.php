@@ -52,11 +52,12 @@ require_once 'lib/setup.php';
 // Back-end
 require_once 'admin/admin-field.php';
 require_once 'admin/assets.php';
-// TO DO: media/sizes.php: Update default image sizes on plugin activation
-// TO DO: media/sizes.php: Register new image sizes on plugin activation? Instead of every admin page load?
-// TO DO: media/sizes.php: Remove CoAuthors sizes removal, let themes and other plugins do this
-// TO DO: media/sizes.php: Change ls_new_image_sizes filter to give and receive size names only. Width and height should only be set on admin screen
-require_once 'admin/media.php';
+require_once 'admin/media-permissions.php';
+// TO DO: Update default image sizes on plugin activation
+// TO DO: Register new image sizes on plugin activation? Instead of every admin page load?
+// TO DO: Remove CoAuthors sizes removal, let themes and other plugins do this
+// TO DO: Change ls_new_image_sizes filter to give and receive size names only. Width and height should only be set on admin screen
+require_once 'admin/media-sizes.php';
 require_once 'admin/menu.php';
 require_once 'admin/page.php';
 // TO DO: post-formats.php: Post format meta with Gutenburg? Or still need to provide?

@@ -8,13 +8,13 @@ add_action( 'admin_enqueue_scripts', function(){
 
 	wp_enqueue_style(
     Setup\name(),
-    plugin_dir_url( __FILE__ ) . 'css/styles.css',
+    plugin_dir_url( __FILE__ ) . 'assets/styles.css',
     [],
     $version
   );
 	// wp_enqueue_script(
   //   Setup\name(),
-  //   plugin_dir_url( __FILE__ ). 'js/scripts.js',
+  //   plugin_dir_url( __FILE__ ). 'assets/scripts.js',
   //   [],
   //   $version,
   //   true
