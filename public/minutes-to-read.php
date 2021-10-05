@@ -1,8 +1,12 @@
 <?php
-
-// Determines how many minutes an average reader would take to read a given string.
-// Can override with filter or argument
-//
+/**
+ * Determines how many minutes an average reader would take to read a given string.
+ * Can override with filter or argument.
+ * 
+ * @param string $string - How long would it take to read this string?
+ * @param integer $wpm - Words per minute for this process only
+ * @return integer $minutes_to_read
+ */
 function minutes_to_read( $string, $wpm = false ) {
 
 	// Slightly below average words per minute
