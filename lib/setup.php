@@ -26,7 +26,7 @@ function option( $name ) {
 	$options = get_option( name() );
 
 	if ( empty( $options[$name] ) )
-		return false;
+		return null;
 	else
 		return $options[ $name ];
 
