@@ -1,7 +1,8 @@
 # Launchpad
 
 A must-use plugin that makes WordPress better.
-Tightens up really basic WordPress settings and UI, provides extra developer functions.
+Tightens up WordPress settings and UI and modifies data output.
+Does not provide support to themes.
 
 ## Changes
 
