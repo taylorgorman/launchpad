@@ -1,18 +1,19 @@
 <?php
 /**
  * Plugin Name:  Launchpad
- * Plugin URI:   http://taylorpatrickgorman.com/wordpress-plugins/launchpad
+ * Plugin URI:   https://taylorgorman.io/wordpress/launchpad
  * Version:      2.0.0
  * Description:  Tightens up really basic WordPress settings and UI, provides extra developer functions
  * Author:       Taylor Gorman
- * Author URI:   http://taylorpatrickgorman.com
+ * Author URI:   https://thegorman.group
  *
  * License:      GPL2
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-// DON'T FORGET to change version number in lib/setup.php as well.
-
+ /**
+	* Security
+  */
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) die;
 
@@ -32,20 +33,6 @@ add_action( 'activated_plugin', function(){
 
 } );
 
-// Activation & Deactivation
-//register_activation_hook( __FILE__, function() {
-//
-//	require 'admin/activation.php';
-//
-//	Activation\activate();
-//
-//} );
-//register_deactivation_hook( __FILE__, function() {
-//
-//	require 'admin/deactivation.php';
-//
-//} );
-
 // Global
 require_once 'lib/setup.php';
 
@@ -53,24 +40,17 @@ require_once 'lib/setup.php';
 require_once 'admin/admin-field.php';
 require_once 'admin/assets.php';
 require_once 'admin/media-permissions.php';
-// TO DO: Update default image sizes on plugin activation
-// TO DO: Register new image sizes on plugin activation? Instead of every admin page load?
-// TO DO: Remove CoAuthors sizes removal, let themes and other plugins do this
-// TO DO: Change ls_new_image_sizes filter to give and receive size names only. Width and height should only be set on admin screen
 require_once 'admin/media-sizes.php';
 require_once 'admin/menu.php';
-//require_once 'admin/new-user-email.php';
+// require_once 'admin/new-user-email.php';
 require_once 'admin/page.php';
-// TO DO: post-formats.php: Post format meta with Gutenburg? Or still need to provide?
 require_once 'admin/post-formats.php';
 require_once 'admin/roles.php';
-// TO DO: Is Settings/Contact using Settings API?
 require_once 'admin/settings-contact.php';
 require_once 'admin/theme-support.php';
 require_once 'admin/users.php';
 
 // Front-end
 require_once 'public/excerpt.php';
-// TO DO: Test
 require_once 'public/get-jetpack-related-posts.php';
 require_once 'public/minutes-to-read.php';

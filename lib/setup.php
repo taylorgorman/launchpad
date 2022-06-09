@@ -1,4 +1,5 @@
 <?php
+// All the shit we use in the whole plugin
 
 namespace Launchpad\Setup;
 
@@ -21,6 +22,9 @@ function name() {
 
 }
 
+/**
+ * The one options value (array) for/from the settings page
+ */
 function option( $name ) {
 
 	$options = get_option( name() );
