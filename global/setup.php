@@ -22,6 +22,9 @@ function name() {
 
 }
 
+const title = 'Launchpad';
+const name = 'launchpad';
+
 /**
  * The one options value (array) for/from the settings page
  */
