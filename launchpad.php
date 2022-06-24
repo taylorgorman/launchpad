@@ -34,7 +34,8 @@ add_action( 'activated_plugin', function(){
  * Import everything
  */
 require_once 'global/setup.php';
-require_once 'global/settings.php';
+
+require_once 'admin/settings.php';
 
 // // Back-end
 // require_once 'admin/admin-field.php';
