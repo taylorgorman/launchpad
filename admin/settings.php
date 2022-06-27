@@ -10,19 +10,20 @@ use Launchpad\Setup;
 /**
  * Create settings admin page
  */
-add_action( 'admin_menu', function() {
+add_action( 'admin_menu', function () {
   add_options_page(
     Setup\title,                    // page title
     Setup\title,                    // menu title
     'manage_options',               // capability
     sanitize_title( Setup\title ),  // menu slug
-    function() {                    // callback
+    function () {                    // callback
 
       // check user capabilities
       if ( ! current_user_can( 'manage_options' ) ) {
         return;
       }
 
+      /*
       // check if the user have submitted the settings
       // WordPress will add the "settings-updated" $_GET parameter to the url
       if ( isset( $_GET['settings-updated'] ) ) {
@@ -32,6 +33,8 @@ add_action( 'admin_menu', function() {
 
       // show error/update messages
       settings_errors( 'wporg_messages' );
+      */
+
       ?>
       <div class="wrap">
         <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
@@ -54,9 +57,9 @@ add_action( 'admin_menu', function() {
 } );
 
 /**
- * Custom option and settings
+ * DB option, settings section and fields
  */
-add_action( 'admin_init', function() {
+add_action( 'admin_init', function () {
 
   $settings = [
     'option_group' => 'wporg',
@@ -69,24 +72,117 @@ add_action( 'admin_init', function() {
     'sections' => [
       [
         'id' => 'wporg_section_developers',
+        /*
         'title' => 'The Matrix has you.',
-        'callback' => function( $args ) {
+        'callback' => function ( $args ) {
           ?>
           <p>Follow the white rabbit.</p>
           <?php
         },
+        */
         'page' => 'launchpad_settings_section',
         'fields' => [
+          // [
+          //   'id' => 'text-test',
+          //   'title' => 'Text Test',
+          //   'callback' => __NAMESPACE__ . '\\admin_field_text',
+          //   'args' => [
+          //     'label_for' => 'text-test',
+          //     'class' => 'text-test-row',
+          //     'description' => 'Are we saving the data?'
+          //   ],
+          // ],
           [
-            'id' => 'wporg_field_pill',
-            'title' => 'Pill',
-            'callback' => __NAMESPACE__ . '\\wporg_field_pill_cb',
+            'id' => 'admin-menu',
+            'title' => 'Admin Menu',
+            'callback' => __NAMESPACE__ . '\\admin_field_multiselect',
             'args' => [
-              'label_for' => 'wporg_field_pill',
-              'class' => 'wporg_row',
-              'wporg_custom_data' => 'custom',
+              'label_for' => 'admin-menu',
+              'class' => 'admin-menu-row',
+              'options' => [
+                'Move Media below post types and Comments',
+                'Remove Appearance / Theme File Editor',
+                'Remove Plugins / Plugin File Editor',
+              ],
             ],
           ],
+          [
+            'id' => 'capabilities',
+            'title' => 'Capabilities',
+            'callback' => __NAMESPACE__ . '\\admin_field_multiselect',
+            'args' => [
+              'label_for' => 'capabilities',
+              'class' => 'capabilities-row',
+              'options' => [
+                'Authors and below can\'t access other users\' media',
+                'Editors can access Theme options',
+              ],
+            ],
+          ],
+          [
+            'id' => 'pages',
+            'title' => 'Pages',
+            'callback' => __NAMESPACE__ . '\\admin_field_multiselect',
+            'args' => [
+              'label_for' => 'pages',
+              'class' => 'pages-row',
+              'options' => [
+                'Add excerpt to pages',
+              ],
+            ],
+          ],
+          [
+            'id' => 'media',
+            'title' => 'Media',
+            'callback' => __NAMESPACE__ . '\\admin_field_multiselect',
+            'args' => [
+              'label_for' => 'media',
+              'class' => 'media-row',
+              'options' => [
+                'Add Open Graph image size',
+              ],
+            ],
+          ],
+          [
+            'id' => 'users',
+            'title' => 'Users',
+            'callback' => __NAMESPACE__ . '\\admin_field_multiselect',
+            'args' => [
+              'label_for' => 'media',
+              'class' => 'media-row',
+              'options' => [
+                'Add Instagram username field',
+                'Add Twitter username field',
+                'Add LinkedIn URL field',
+                'Add Facebook URL field',
+              ],
+            ],
+          ],
+          [
+            'id' => 'coauthors',
+            'title' => 'Plugin: CoAuthors',
+            'callback' => __NAMESPACE__ . '\\admin_field_multiselect',
+            'args' => [
+              'label_for' => 'coauthors',
+              'class' => 'coauthors-row',
+              'options' => [
+                'Remove extra image sizes (LIST NAMES)',
+              ],
+            ],
+          ],
+          // [
+          //   'id' => 'matrix',
+          //   'title' => 'Matrix pill',
+          //   'callback' => __NAMESPACE__ . '\\admin_field_select',
+          //   'args' => [
+          //     'label_for' => 'matrix',
+          //     'class' => 'matrix_row',
+          //     'options' => [
+          //       'Pick a pill'
+          //     ],
+          //     'description' => 'I have something you want'
+          //   ],
+          // ],
         ],
       ],
     ],
@@ -124,17 +220,98 @@ add_action( 'admin_init', function() {
 } );
 
 /**
-* Pill field callbakc function.
-*
-* WordPress has magic interaction with the following keys: label_for, class.
-* - the "label_for" key value is used for the "for" attribute of the <label>.
-* - the "class" key value is used for the "class" attribute of the <tr> containing the field.
-* Note: you can add custom key value pairs to be used inside your callbacks.
-*
-* @param array $args
-*/
-function wporg_field_pill_cb( $args ) {
-  // Get the value of the setting we've registered with register_setting()
+ * Admin field
+ * See other admin field functions for args specific to each input type.
+ * In the fields for each type below, the name attribute is what makes it save properly.
+ * 
+ * @param array $args
+ * @param array $args['label_for'] - WordPress adds to the for attribute of the <label>. Add it to the field's id attribute.
+ * @param array $args['class'] - WordPress adds to the class of the <tr> containing the field and label.
+ * @param array $args['description']
+ */
+function admin_field( $args, $render_field ) {
+  $data = get_option( 'wporg_options' );
+  $render_field( $data[ $args['label_for'] ] );
+  if ( $args['description'] ) {
+    ?>
+    <p class="description">
+      <?php echo $args['description']; ?>
+    </p>
+    <?php
+  }
+}
+
+/**
+ * Admin field: multi-select
+ * Achieved with checkboxes
+ * See admin_field() for arguments across input types
+ * 
+ * @param array $args
+ * @param array $args['options']
+ */
+function admin_field_multiselect( $args ) {
+  admin_field( $args, function ( $data ) use ( $args ) {
+
+    ?>
+    <fieldset>
+      <legend class="screen-reader-text"><?php echo $args['description']; ?></legend>
+      <?php
+      foreach ( $args['options'] as $option ) {
+        ?>
+        <label>
+          <input
+            type="checkbox"
+            name="wporg_options[<?php echo esc_attr( $args['label_for'] ); ?>][]"
+            value="<?php echo $option; ?>"
+            <?php checked( is_array( $data ) && in_array( $option, $data ) ); ?>
+          />
+          <?php echo $option; ?>
+        </label>
+        <br />
+        <?php
+      }
+      ?>
+    </fieldset>
+    <?php
+
+  } );
+}
+
+/**
+ * Admin field: select
+ * Achieved with dropdown or radio buttons, depending on an argument
+ */
+
+/**
+ * Admin field: boolean
+ * Achieved with one checkbox
+ */
+
+/**
+ * Admin field: text
+ * Achieved with text input
+ */
+function admin_field_text( $args ) {
+  admin_field( $args, function ( $data ) use ( $args ) {
+    ?>
+    <input
+      type="text"
+      id="<?php echo esc_attr( $args['label_for'] ); ?>"
+      name="wporg_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
+      value="<?php echo $data; ?>"
+    />
+    <?php
+  } );
+}
+
+/**
+ * Admin field
+ * 
+ * @param array $args
+ * @param array $args['label_for'] - WordPress adds to the for attribute of the <label>. Add it to the field's id attribute.
+ * @param array $args['class'] - WordPress adds to the class of the <tr> containing the field and label.
+ */
+function admin_field_select( $args ) {
   $options = get_option( 'wporg_options' );
   ?>
   <select
