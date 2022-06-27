@@ -41,7 +41,7 @@ add_action( 'admin_menu', function () {
         <form action="options.php" method="post">
           <?php
           // output security fields for the registered setting "wporg"
-          settings_fields( 'wporg' );
+          settings_fields( 'launchpad' );
           // output setting sections and their fields
           // (sections are registered for "wporg", each field is registered to a specific section)
           do_settings_sections( 'launchpad_settings_section' );
@@ -62,8 +62,8 @@ add_action( 'admin_menu', function () {
 add_action( 'admin_init', function () {
 
   $settings = [
-    'option_group' => 'wporg',
-    'option_name' => 'wporg_options',
+    'option_group' => 'launchpad',
+    'option_name' => 'launchpad_settings',
     'option_args' => [
       'type' => 'object',
       'description' => 'All data related to Launchpad settings',
@@ -71,7 +71,7 @@ add_action( 'admin_init', function () {
     ],
     'sections' => [
       [
-        'id' => 'wporg_section_developers',
+        'id' => 'launchpad_settings_section',
         /*
         'title' => 'The Matrix has you.',
         'callback' => function ( $args ) {
@@ -230,7 +230,7 @@ add_action( 'admin_init', function () {
  * @param array $args['description']
  */
 function admin_field( $args, $render_field ) {
-  $data = get_option( 'wporg_options' );
+  $data = get_option( 'launchpad_settings' );
   $render_field( $data[ $args['label_for'] ] );
   if ( $args['description'] ) {
     ?>
@@ -261,7 +261,7 @@ function admin_field_multiselect( $args ) {
         <label>
           <input
             type="checkbox"
-            name="wporg_options[<?php echo esc_attr( $args['label_for'] ); ?>][]"
+            name="launchpad_settings[<?php echo esc_attr( $args['label_for'] ); ?>][]"
             value="<?php echo $option; ?>"
             <?php checked( is_array( $data ) && in_array( $option, $data ) ); ?>
           />
@@ -297,7 +297,7 @@ function admin_field_text( $args ) {
     <input
       type="text"
       id="<?php echo esc_attr( $args['label_for'] ); ?>"
-      name="wporg_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
+      name="launchpad_settings[<?php echo esc_attr( $args['label_for'] ); ?>]"
       value="<?php echo $data; ?>"
     />
     <?php
@@ -312,12 +312,12 @@ function admin_field_text( $args ) {
  * @param array $args['class'] - WordPress adds to the class of the <tr> containing the field and label.
  */
 function admin_field_select( $args ) {
-  $options = get_option( 'wporg_options' );
+  $options = get_option( 'launchpad_settings' );
   ?>
   <select
     id="<?php echo esc_attr( $args['label_for'] ); ?>"
     data-custom="<?php echo esc_attr( $args['wporg_custom_data'] ); ?>"
-    name="wporg_options[<?php echo esc_attr( $args['label_for'] ); ?>]"
+    name="launchpad_settings[<?php echo esc_attr( $args['label_for'] ); ?>]"
   >
     <option
       value="red"
