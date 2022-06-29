@@ -108,10 +108,14 @@ function page( array $page = [] ) {
  * 
  * @param array $section [
  *   @value string $title - Required.
- *   @value string $options_group - Required. Name of option group on the page to which this section belongs
  *   @value string $id - Falls back to kebab-cased $title + "-section"
+ *   @value string $options_group - Required. Name of option group on the page to which this section belongs
  *   @value string $option_name - Falls back to kebab-case of $title
  *   @value string $option_args - Optional, but encouraged
+ *   @value string $sections_group - Required (unless $page is provided instead). Relates this section to the page where it should appear
+ *   @value string $page - Alias for $sections_group to match add_settings_section() param names
+ *   @value string|callable $content - Markup that appears between title and fields
+ *   @value callable $callback - Alias for $content to match add_settings_section() param names
  * ]
  * 
  * @return void
@@ -124,6 +128,18 @@ function section( array $section = [] ) {
     $section['id'] = sanitize_title( $section['title'] ) . '-section';
   if ( empty( $section['option_name'] ) )
     $section['option_name'] = sanitize_title( $section['title'] );
+  if ( is_string( $section['content'] ) ) {
+    $content = $section['content'];
+    $section['content'] = function () use ( $content ) {
+      // Wrap string in a <p> if it doesn't start with a tag
+      // to prevent inconsistent typography.
+      // Logic hole: the string starts with an inline formatting tag, like <strong>
+      if ( substr( $content, 0, 1 ) !== '<' )
+        $content = "<p>$content</p>";
+      // Render
+      echo $content;
+    };
+  }
 
   add_action( 'admin_init', function () use ( $section ) {
     /**

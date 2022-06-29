@@ -18,9 +18,7 @@ MakeAdmin\page( [
   'sections' => [
     [
       'title' => 'Launchpad',
-      // 'content' => function () {
-      //   echo 'Next: nested fields..';
-      // },
+      'content' => 'Section content is a string',
       'fields' => [
         [
           'type' => 'multiselect',
