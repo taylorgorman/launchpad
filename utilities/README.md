@@ -1,4 +1,5 @@
 # MakeAdmin
+> Create interfaces in WordPress admin.
 
 ## TLDR Code Examples
 
@@ -33,17 +34,39 @@ MakeAdmin\page( [
 
 ## Goals
 
-
-- [ ] Add field(s) to existing section
-- [ ] Add section(s) to existing page
-- [ ] Add section(s) with field(s) to existing page
-- [x] Add page(s) as subpage(s) of existing page
-- [x] Add page(s) with section(s) as subpage(s) of existing page
-- [ ] Add page(s) with section(s) with field(s) as subpage(s) of existing page
+### Admin pages
 - [ ] Add top-level page(s)
 - [ ] Add top-level page(s) with subpage(s)
 - [ ] Add top-level page(s) with subpage(s) with section(s)
 - [ ] Add top-level page(s) with subpage(s) with section(s) with field(s)
+- [ ] Add top-level page(s) with section(s)
+- [ ] Add top-level page(s) with section(s) with field(s)
+- [x] Add subpage(s)
+- [x] Add subpage(s) with section(s)
+- [x] Add subpage(s) with section(s) with field(s)
+- [ ] Add section(s) to existing page
+- [ ] Add section(s) with field(s) to existing page
+- [ ] Add field(s) to existing section
+
+### Input types
+- [ ] Default — `text`, `number`, anything else that's just a vanilla `<input>`)
+- [ ] Textbox — Long text
+- [ ] Boolean — A checkbox styled to look like a switch
+- [ ] Multiselect — Default style = checkboxes
+  - [x] Style = checkboxes
+  - [ ] Style = buttons
+  - [ ] Style = images
+- [ ] Select — Default style = dropdown. Can only select one
+  - [ ] Style = dropdown — `<select>`
+  - [ ] Style = radio buttons
+  - [ ] Style = buttons
+  - [ ] Style = images
+- [ ] Range — Between min and max
+
+### Input features
+- [ ] Value validation
+
+### Dashboard widgets
 - [ ] Something something dashboard widget(s)
 
 ## Data models
@@ -164,12 +187,15 @@ add_settings_field(
 
 ## Frequent questions
 
+### Uh, why not [ACF](https://www.advancedcustomfields.com/) / [Carbon Fields](https://carbonfields.net/) / insert other project here?
+You know, I did, at first. And you could too, go for it! Reinventing the wheel is rarely a good idea. However, none of them did everything I needed. Yes, ACF does everything and more, _but_ it requires the ACF plugin, naturally. This package lets our plugins stand on their own, and also follow WordPress style guidelines to the letter.
+
 ### Why you changin' all these terms?
 Listen, WordPress is great, but it is old and slow. It _has_ to be, it runs under nearly 40% of the internet. Open source packages like this are what help it rise above faster than it can on its own. Long live open source!
 
 ### Why change from option to options and section to sections?
 You're a pedantic little shit, aren't you? Good, me too. If it's a group, it's a plural. A group of sections; a group of options; a pride of lions; a murder of crows. You get it.
 
-## Scratch notes
+## Scratch notes, don't read
 
 So it's technically possible to add a field on more than one section. But I'm not sure it would work because the real magic happens with settings_fields( $option_group ) at the top of the page, plus name="$option_name[$field_name]" on the inputs. ..Hm but those are different.. and are connected byyy.. register_setting() it seems. Ok ok ok, so the PAGE says "this is my settings/option group name" with settings_fields( $option_group ). Then, to add data to that page, you register_setting() with THAT $option_group and YOUR $option_name. So multiple $option_names on one $option_group. And the args on register_setting() just describe the data and model. THEN to create user inputs, you must add YOUR $option_name to the name attribute on the input. Sheesh. That is so brittle and unclear.

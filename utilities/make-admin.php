@@ -249,7 +249,6 @@ function input( $field ) {
     </p>
     <?php
   }
-  // echo '<pre>'; var_dump($field); echo '</pre>';
 }
 
 /**
