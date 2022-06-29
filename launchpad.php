@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:  Launchpad
- * Plugin URI:   https://taylorgorman.io/wordpress/launchpad
+ * Plugin URI:   https://thegorman.group/wordpress/launchpad
  * Version:      2.0.0
  * Description:  Tightens up really basic WordPress settings and UI, provides extra developer functions
  * Author:       Taylor Gorman
