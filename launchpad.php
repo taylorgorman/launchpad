@@ -35,7 +35,7 @@ add_action( 'activated_plugin', function(){
  */
 require_once 'global/setup.php';
 
-require_once 'utilities/make-admin.php';
+require_once 'make-admin/index.php';
 
 require_once 'admin/settings.php';
 
