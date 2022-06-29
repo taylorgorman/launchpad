@@ -1,13 +1,16 @@
 <?php
-/*
-** Modify Page post type
-*/
+
+//use Launchpad\Setup;
+
 add_action( 'init', function(){
 
+	// Page excerpt
 	add_post_type_support( 'page', 'excerpt' );
 
-	global $lp;
-	if ( empty($lp['allow-page-comments']) )
-		remove_post_type_support( 'page', 'comments' );
+	// Page comments
+	//if ( Setup\option( 'support-page-comments' ) )
+	//	add_post_type_support( 'page', 'comments' );
+	//else
+	//	remove_post_type_support( 'page', 'comments' );
 
 } );
