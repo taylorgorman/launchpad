@@ -11,9 +11,6 @@
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  */
 
- /**
-	* Security
-  */
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) die;
 
@@ -33,24 +30,30 @@ add_action( 'activated_plugin', function(){
 
 } );
 
-// Global
-require_once 'lib/setup.php';
+/**
+ * Import everything
+ */
+require_once 'global/setup.php';
 
-// Back-end
-require_once 'admin/admin-field.php';
-require_once 'admin/assets.php';
-require_once 'admin/media-permissions.php';
-require_once 'admin/media-sizes.php';
-require_once 'admin/menu.php';
-// require_once 'admin/new-user-email.php';
-require_once 'admin/page.php';
-require_once 'admin/post-formats.php';
-require_once 'admin/roles.php';
-require_once 'admin/settings-contact.php';
-require_once 'admin/theme-support.php';
-require_once 'admin/users.php';
+require_once 'make-admin/index.php';
 
-// Front-end
-require_once 'public/excerpt.php';
-require_once 'public/get-jetpack-related-posts.php';
-require_once 'public/minutes-to-read.php';
+require_once 'admin/settings.php';
+
+// // Back-end
+// require_once 'admin/admin-field.php';
+// require_once 'admin/assets.php';
+// require_once 'admin/media-permissions.php';
+// require_once 'admin/media-sizes.php';
+// require_once 'admin/menu.php';
+// // require_once 'admin/new-user-email.php';
+// require_once 'admin/page.php';
+// require_once 'admin/post-formats.php';
+// require_once 'admin/roles.php';
+// require_once 'admin/settings-contact.php';
+// require_once 'admin/theme-support.php';
+// require_once 'admin/users.php';
+
+// // Front-end
+// require_once 'public/excerpt.php';
+// require_once 'public/get-jetpack-related-posts.php';
+// require_once 'public/minutes-to-read.php';

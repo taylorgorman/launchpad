@@ -54,3 +54,8 @@ Modify the image sizes added by Launchpad, which are small, xlarge, and open_gra
 ## Other recommended resources
 
 - SoberWP Models for registering post types and taxonomies
+
+## Questions and Answers
+
+### Why didn't you use ACF to create the settings page?
+I didn't want to make this plugin dependent upon another plugin, even if that plugin is one of the most popular plugins in the WordPress community.
