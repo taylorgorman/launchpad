@@ -11,7 +11,7 @@ function content() {
         'name' => 'excerpt-length',
         'execute' => function () {
 
-          add_filter( 'excerpt_length', function(){ return 25; } );
+          add_filter( 'excerpt_length', function () { return 25; } );
 
         },
       ],

@@ -23,7 +23,7 @@ function capabilities() {
         'name' => 'view-others-media',
         'execute' => function () {
 
-          add_filter( 'pre_get_posts', function( $query ){
+          add_filter( 'pre_get_posts', function ( $query ) {
             if (
               is_admin()
               && $query->get( 'post_type' ) === 'attachment'

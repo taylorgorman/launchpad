@@ -36,7 +36,7 @@ function admin_menu() {
           add_action( 'admin_menu', function () {
             global $menu;
             foreach ( $menu as $key => $item )
-              if ( in_array('Media', $item) )
+              if ( in_array( 'Media', $item ) )
                 $media_key = $key;
         
             $menu[50] = $menu[$media_key];
