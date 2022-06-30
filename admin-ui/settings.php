@@ -9,66 +9,30 @@ use Launchpad\Setup;
 use Utilities\MakeAdmin;
 
 /**
+ * Convert changeset groups to MakeAdmin API
+ */
+$fields = array_map( function ( $change_group ) {
+  return [
+    'type' => 'multiselect',
+    'label' => $change_group['title'],
+    'options' => array_map( function ( $change ) {
+      return $change['title'];
+    }, $change_group['changes'] ),
+  ];
+}, Setup\changes() );
+
+/**
  * Create settings admin page
  */
 MakeAdmin\page( [
-  'title' => Setup\title,
+  'title' => Setup\TITLE,
   'capability' => 'manage_options',
   'parent' => 'Settings',
   'sections' => [
     [
-      'title' => 'Launchpad',
+      'title' => Setup\TITLE,
       'content' => 'Section content is a string',
-      'fields' => [
-        [
-          'type' => 'multiselect',
-          'label' => 'Admin Menu',
-          'options' => [
-            'Move Media below post types and Comments',
-            'Remove Appearance / Theme File Editor',
-            'Remove Plugins / Plugin File Editor',
-          ],
-        ],
-        [
-          'type' => 'multiselect',
-          'label' => 'Capabilities',
-          'options' => [
-            'Authors and below can\'t access other users\' media',
-            'Editors can access Theme options',
-          ],
-        ],
-        [
-          'type' => 'multiselect',
-          'label' => 'Pages',
-          'options' => [
-            'Add excerpt to pages',
-          ],
-        ],
-        [
-          'type' => 'multiselect',
-          'label' => 'Media',
-          'options' => [
-            'Add Open Graph image size',
-          ],
-        ],
-        [
-          'type' => 'multiselect',
-          'label' => 'Users',
-          'options' => [
-            'Add Instagram username field',
-            'Add Twitter username field',
-            'Add LinkedIn URL field',
-            'Add Facebook URL field',
-          ],
-        ],
-        [
-          'type' => 'multiselect',
-          'label' => 'Plugin: CoAuthors',
-          'options' => [
-            'Remove extra image sizes (LIST NAMES)',
-          ],
-        ],
-      ],
+      'fields' => $fields,
     ],
   ],
 ] );
