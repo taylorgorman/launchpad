@@ -16,7 +16,7 @@ function changes() {
         [
           'name' => 'remove-theme-editor',
           'title' => 'Remove Appearance / Theme File Editor',
-          'callback' => function () {
+          'execute' => function () {
     
             add_action( 'admin_menu', function () {
               remove_submenu_page( 'themes.php', 'theme-editor.php' );
@@ -27,7 +27,7 @@ function changes() {
         [
           'name' => 'remove-plugin-editor',
           'title' => 'Remove Plugins / Plugin File Editor',
-          'callback' => function () {
+          'execute' => function () {
     
             add_action( 'admin_menu', function () {
               remove_submenu_page( 'plugins.php', 'plugin-editor.php' );
@@ -38,7 +38,7 @@ function changes() {
         [
           'title' => 'Move Media below post types and Comments',
           'name' => 'move-media-below',
-          'callback' => function () {
+          'execute' => function () {
     
             add_action( 'admin_menu', function () {
               global $menu;
@@ -60,13 +60,13 @@ function changes() {
         [
           'title' => 'Editors can access Theme options',
           'name' => 'access-theme-options',
-          'callback' => function () {
+          'execute' => function () {
           },
         ],
         [
           'title' => 'Authors and below can\'t access other users\' media',
           'name' => 'access-other-users-media',
-          'callback' => function () {
+          'execute' => function () {
           },
         ],
       ],
@@ -77,7 +77,7 @@ function changes() {
         [
           'title' => 'Add excerpt to pages',
           'name' => 'page-excerpt',
-          'callback' => function () {
+          'execute' => function () {
           },
         ],
       ],
@@ -88,7 +88,7 @@ function changes() {
         [
           'title' => 'Add Open Graph image size',
           'name' => 'open-graph-image-size',
-          'callback' => function () {
+          'execute' => function () {
           },
         ],
       ],
@@ -99,25 +99,25 @@ function changes() {
         [
           'title' => 'Add Instagram username field',
           'name' => 'user-field-instagram',
-          'callback' => function () {
+          'execute' => function () {
           },
         ],
         [
           'title' => 'Add Twitter username field',
           'name' => 'user-field-twitter',
-          'callback' => function () {
+          'execute' => function () {
           },
         ],
         [
           'title' => 'Add LinkedIn URL field',
           'name' => 'user-field-linkedin',
-          'callback' => function () {
+          'execute' => function () {
           },
         ],
         [
           'title' => 'Add Facebook URL field',
           'name' => 'user-field-facebook',
-          'callback' => function () {
+          'execute' => function () {
           },
         ],
       ],
