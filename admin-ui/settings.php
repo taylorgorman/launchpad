@@ -32,7 +32,6 @@ MakeAdmin\page( [
   'sections' => [
     [
       'title' => Setup\TITLE,
-      'content' => 'Section content is a string',
       'fields' => $fields,
     ],
   ],
