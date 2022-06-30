@@ -58,14 +58,38 @@ function definitions() {
       'title' => 'Capabilities',
       'changes' => [
         [
-          'title' => 'Editors can access Theme options',
+          'title' => 'Edit Theme options: Editors and up (default is Administrators)',
           'name' => 'access-theme-options',
           'execute' => function () {
           },
         ],
         [
-          'title' => 'Authors and below can\'t access other users\' media',
-          'name' => 'access-other-users-media',
+          'title' => 'Upload media: Contributors and up (default is Authors)',
+          'name' => 'upload-media',
+          'execute' => function () {
+          },
+        ],
+        [
+          'title' => 'View others\' media: only roles that can edit others\' posts (default is Authors and up)',
+          'name' => 'view-others-media',
+          'execute' => function () {
+
+            add_filter( 'pre_get_posts', function( $query ){
+              if (
+                is_admin()
+                && $query->get( 'post_type' ) === 'attachment'
+                && ! current_user_can( 'edit_others_posts' )
+              ) {
+                // Only get posts from current user
+                $query->set( 'author', get_current_user_id() );
+              }
+            } );
+
+          },
+        ],
+        [
+          'title' => 'Publish posts: Editors and up (default is Authors)',
+          'name' => 'publish-posts',
           'execute' => function () {
           },
         ],
@@ -83,11 +107,31 @@ function definitions() {
       ],
     ],
     [
+      'title' => 'Content',
+      'changes' => [
+        [
+          'title' => 'Set shortened excerpt length to 25 characters',
+          'name' => 'excerpt-length',
+          'execute' => function () {
+
+            add_filter( 'excerpt_length', function(){ return 25; } );
+
+          },
+        ],
+      ],
+    ],
+    [
       'title' => 'Media',
       'changes' => [
         [
           'title' => 'Add Open Graph image size',
           'name' => 'open-graph-image-size',
+          'execute' => function () {
+          },
+        ],
+        [
+          'title' => 'Remove public attachment pages',
+          'name' => 'remove-attachment-pages',
           'execute' => function () {
           },
         ],
