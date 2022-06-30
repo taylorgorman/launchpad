@@ -7,7 +7,7 @@ use Launchpad\Setup;
 $data = get_option( Setup\NAME );
 
 // For each change group..
-foreach ( Setup\changes() as $change_group ) {
+foreach ( definitions() as $change_group ) {
   // Get group data
   $group_data = $data[ sanitize_title( $change_group['title'] ) ];
   // If we don't even have group data, don't bother

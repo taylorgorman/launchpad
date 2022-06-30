@@ -1,6 +1,6 @@
 <?php
 
-namespace Launchpad\Setup;
+namespace Launchpad\Changes;
 
 /**
  * Changesets inside named groups
@@ -8,7 +8,7 @@ namespace Launchpad\Setup;
  * 
  * @return array
  */
-function changes() {
+function definitions() {
   return [
     [
       'title' => 'Admin Menu',

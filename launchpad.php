@@ -34,10 +34,7 @@ add_action( 'activated_plugin', function(){
  * Import everything
  */
 require_once 'vendor/make-admin/index.php';
-
 require_once 'setup/constants.php';
-require_once 'setup/changes.php';
-
+require_once 'changes/definitions.php';
+require_once 'changes/executions.php';
 require_once 'admin-ui/settings.php';
-
-require_once 'changes/execute.php';

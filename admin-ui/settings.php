@@ -5,6 +5,7 @@
  */
 
 namespace Launchpad\Settings;
+use Launchpad\Changes;
 use Launchpad\Setup;
 use Utilities\MakeAdmin;
 
@@ -19,7 +20,7 @@ $fields = array_map( function ( $change_group ) {
       return $change['title'];
     }, $change_group['changes'] ),
   ];
-}, Setup\changes() );
+}, Changes\definitions() );
 
 /**
  * Create settings admin page
@@ -36,4 +37,3 @@ MakeAdmin\page( [
     ],
   ],
 ] );
-
