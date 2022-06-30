@@ -1,7 +1,6 @@
 <?php
 
-namespace Utilities\MakeAdmin;
-use Launchpad\Setup;
+namespace Vendor\MakeAdmin;
 
 /**
  * Create an admin page. Under existing page or as top-level.

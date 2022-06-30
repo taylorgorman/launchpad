@@ -4,10 +4,10 @@
  * @see https://developer.wordpress.org/plugins/settings/custom-settings-page/
  */
 
-namespace Launchpad\Settings;
+namespace Launchpad\AdminUi;
 use Launchpad\Changes;
 use Launchpad\Setup;
-use Utilities\MakeAdmin;
+use Vendor\MakeAdmin;
 
 /**
  * Convert changeset groups to MakeAdmin API
