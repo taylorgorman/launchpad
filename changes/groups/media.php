@@ -7,13 +7,13 @@ function media() {
     'title' => 'Media',
     'changes' => [
       [
-        'title' => 'Add Open Graph image size',
+        'title' => UNSUPPORTED . 'Add Open Graph image size',
         'name' => 'open-graph-image-size',
         'execute' => function () {
         },
       ],
       [
-        'title' => 'Remove public attachment pages',
+        'title' => UNSUPPORTED . 'Remove public attachment pages',
         'name' => 'remove-attachment-pages',
         'execute' => function () {
         },

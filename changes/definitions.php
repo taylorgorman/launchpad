@@ -2,6 +2,8 @@
 
 namespace Launchpad\Changes;
 
+const UNSUPPORTED = '<em style="color:red">(UNSUPPORTED)</em> ';
+
 require_once 'groups/admin-menu.php';
 require_once 'groups/capabilities.php';
 require_once 'groups/pages.php';

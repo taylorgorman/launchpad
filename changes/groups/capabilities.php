@@ -7,13 +7,13 @@ function capabilities() {
     'title' => 'Capabilities',
     'changes' => [
       [
-        'title' => 'Edit Theme options: Editors and up (default is Administrators)',
+        'title' => UNSUPPORTED . 'Edit Theme options: Editors and up (default is Administrators)',
         'name' => 'access-theme-options',
         'execute' => function () {
         },
       ],
       [
-        'title' => 'Upload media: Contributors and up (default is Authors)',
+        'title' => UNSUPPORTED . 'Upload media: Contributors and up (default is Authors)',
         'name' => 'upload-media',
         'execute' => function () {
         },
@@ -37,7 +37,7 @@ function capabilities() {
         },
       ],
       [
-        'title' => 'Publish posts: Editors and up (default is Authors)',
+        'title' => UNSUPPORTED . 'Publish posts: Editors and up (default is Authors)',
         'name' => 'publish-posts',
         'execute' => function () {
         },

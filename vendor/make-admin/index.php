@@ -264,10 +264,10 @@ function input_multiselect( $field ) {
         <input
           type="checkbox"
           name="<?php echo esc_attr( $field['option_name'] . '[' . $field['id'] . '][]' ); ?>"
-          value="<?php echo $option; ?>"
+          value="<?php echo esc_attr( $option ); ?>"
           <?php checked( is_array( $field['value'] ) && in_array( $option, $field['value'] ) ); ?>
         />
-        <?php echo $option; ?>
+        <?php echo wp_kses_post( $option ); ?>
       </label>
       <br />
       <?php
