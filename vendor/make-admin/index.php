@@ -166,13 +166,15 @@ function section( array $section = [] ) {
   /**
    * Register nested fields
    */
-  foreach ( $section['fields'] as $field ) {
-    // Nested sections always inherit their page's groups
-    $field['section_id'] = $section['id'];
-    $field['sections_group'] = $section['sections_group'];
-    $field['option_name'] = $section['option_name'];
-    // Register field
-    field( $field );
+  if ( ! empty( $section['fields'] ) ) {
+    foreach ( $section['fields'] as $field ) {
+      // Nested sections always inherit their page's groups
+      $field['section_id'] = $section['id'];
+      $field['sections_group'] = $section['sections_group'];
+      $field['option_name'] = $section['option_name'];
+      // Register field
+      field( $field );
+    }
   }
 }
 

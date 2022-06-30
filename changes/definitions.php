@@ -3,6 +3,7 @@
 namespace Launchpad\Changes;
 
 const UNSUPPORTED = '<em style="color:red">(UNSUPPORTED)</em> ';
+const UNTESTED = '<em style="color:red">(UNTESTED)</em> ';
 
 require_once 'groups/admin-menu.php';
 require_once 'groups/capabilities.php';

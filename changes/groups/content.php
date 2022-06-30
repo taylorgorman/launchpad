@@ -7,7 +7,7 @@ function content() {
     'title' => 'Content',
     'changes' => [
       [
-        'title' => 'Set shortened excerpt length to 25 words (default is 55)',
+        'title' => 'Set generated excerpt length to 25 words (default is 55)',
         'name' => 'excerpt-length',
         'execute' => function () {
 
