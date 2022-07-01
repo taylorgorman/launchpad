@@ -44,8 +44,8 @@ MakeAdmin\page( [
 - [x] Add subpage(s)
 - [x] Add subpage(s) with section(s)
 - [x] Add subpage(s) with section(s) with field(s)
-- [ ] Add section(s) to existing page
-- [ ] Add section(s) with field(s) to existing page
+- [x] Add section(s) to existing page
+- [x] Add section(s) with field(s) to existing page
 - [ ] Add field(s) to existing section
 
 ### Input types

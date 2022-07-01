@@ -123,10 +123,6 @@ function section( array $section = [] ) {
   /**
    * Fallbacks
    */
-  if ( empty( $section['id'] ) )
-    $section['id'] = sanitize_title( $section['title'] ) . '-section';
-  if ( empty( $section['option_name'] ) )
-    $section['option_name'] = sanitize_title( $section['title'] );
   if ( is_string( $section['content'] ) ) {
     $content = $section['content'];
     $section['content'] = function () use ( $content ) {
@@ -139,6 +135,10 @@ function section( array $section = [] ) {
       echo $content;
     };
   }
+  $section['id'] = $section['id'] ?: sanitize_title( $section['title'] ) . '-section';
+  $section['option_name'] = $section['option_name'] ?: sanitize_title( $section['title'] );
+  $section['sections_group'] = $section['sections_group'] ?: $section['page'];
+  $section['content'] = $section['content'] ?: $section['callback'];
 
   add_action( 'admin_init', function () use ( $section ) {
     /**
@@ -158,8 +158,8 @@ function section( array $section = [] ) {
     add_settings_section(
       $section['id'], // Unique ID used in.. something. But not necessery to make this work.
       $section['title'] === $section['page_title'] ? '' : $section['title'], // Don't display section title if it repeats page title.
-      $section['content'] ?: $section['callback'], // Just renders content btw heading and fields.
-      $section['sections_group'] ?: $section['page'] // same as do_settings_sections() on the settings page.
+      $section['content'], // Just renders content btw heading and fields.
+      $section['sections_group'] // same as do_settings_sections() on the settings page.
     );
   } );
 
@@ -186,6 +186,7 @@ function section( array $section = [] ) {
  *   @value array $label - Required.
  *   @value array $id - Falls back to kebab-cased $label
  *   @value array $description - Help text appears beneath the input
+ *   @value callable $callback - Optional. Advanced use only. Custom control the render of the field. Passed directly to add_settings_field( $callback ).
  * ]
  * 
  * @return void
@@ -194,8 +195,7 @@ function field( array $field = [] ) {
   /**
    * Fallbacks
    */
-  if ( empty( $field['id'] ) )
-    $field['id'] = sanitize_title( $field['label'] );
+  $field['id'] = $field['id'] ?: sanitize_title( $field['label'] );
 
   add_action( 'admin_init', function () use ( $field ) {
     /**
@@ -204,7 +204,7 @@ function field( array $field = [] ) {
     add_settings_field(
       $field['id'],
       $field['label'],
-      __NAMESPACE__ . '\\input',
+      $field['callback'] ?: __NAMESPACE__ . '\\input',
       $field['sections_group'],
       $field['section_id'],
       $field, // Just pass entire $field array to input()
@@ -283,9 +283,13 @@ function input_multiselect( $field ) {
  * An <input> with the type value blindly thrown in
  */
 function input_default( $field ) {
+  // Fallbacks
+  $field['type'] = $field['type'] ?: 'text';
+
+  // Render
   ?>
   <input
-    type="<?php echo esc_attr( $field['type'] ); ?>"
+    type="<?php echo esc_attr( $field['type'] ?: 'text' ); ?>"
     id="<?php echo esc_attr( $field['id'] ); ?>"
     name="<?php echo esc_attr( $field['option_name'] . '[' . $field['id'] . ']' ); ?>"
     value="<?php echo $field['value']; ?>"
