@@ -8,22 +8,28 @@ function admin_menu() {
     'changes' => [
       [
         'name' => 'remove-theme-editor',
-        'title' => 'Remove Appearance / Theme File Editor',
+        'title' => 'Remove Theme File Editor',
         'execute' => function () {
   
           add_action( 'admin_menu', function () {
+            // < 5.9
             remove_submenu_page( 'themes.php', 'theme-editor.php' );
+            // >= 5.9
+            remove_submenu_page( 'tools.php', 'theme-editor.php' );
           }, 999 );
   
         },
       ],
       [
         'name' => 'remove-plugin-editor',
-        'title' => 'Remove Plugins / Plugin File Editor',
+        'title' => 'Remove Plugin File Editor',
         'execute' => function () {
   
           add_action( 'admin_menu', function () {
+            // < 5.9
             remove_submenu_page( 'plugins.php', 'plugin-editor.php' );
+            // >= 5.9
+            remove_submenu_page( 'tools.php', 'plugin-editor.php' );
           }, 999 );
   
         },
