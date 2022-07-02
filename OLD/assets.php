@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Set up scripts and styles
+ * TO DO: Maybe do this with MakeAdmin?
+ */
 use Launchpad\Setup;
 
 add_action( 'admin_enqueue_scripts', function(){

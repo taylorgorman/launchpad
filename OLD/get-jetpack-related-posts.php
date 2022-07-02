@@ -1,8 +1,9 @@
 <?php
-/*
-** Get Jetpack's related posts
-** You'll have to elsewhere turn off Jetpack's automatic insertion into the content
-*/
+/**
+ * Get Jetpack's related posts
+ * You'll have to elsewhere turn off Jetpack's automatic insertion into the content
+ * TO DO: Worth keeping? Still works?
+ */
 function get_jetpack_related_posts( $numberposts = 3, $postID = null ) {
 
 	if ( empty($postID) )

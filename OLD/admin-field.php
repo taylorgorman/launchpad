@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Provides means to create admin fields more easily than Settings API
+ * TO DO: Investigate and fold anything valuable into MakeAdmin
+ */
 function admin_field( $arguments ) {
 
 	$v = wp_parse_args_deep( $arguments, [

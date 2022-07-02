@@ -2,6 +2,7 @@
 /**
  * Determines how many minutes an average reader would take to read a given string.
  * Can override with filter or argument.
+ * TO DO: Uhhhhh where to put this? It doesn't belong in Launchpad anymore.
  * 
  * @param string $string - How long would it take to read this string?
  * @param integer $wpm - Words per minute for this process only

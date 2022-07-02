@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Modifications to image sizes
+ * TO DO: Anything left worth moving to /changes/groups/media?
+ */
 namespace Launchpad\MediaSizes;
 
 // Make image sizes array available everywhere

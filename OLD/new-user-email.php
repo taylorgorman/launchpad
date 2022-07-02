@@ -1,4 +1,8 @@
 <?php
+/**
+ * I think this isn't called anywhere. It it too bespoke?
+ * Check out https://wordpress.org/plugins/bnfw/ and see if it replaces this.
+ */
 if ( ! function_exists('wp_new_user_notification') ) {
 function wp_new_user_notification( $user_id, $plaintext_password='' ) {
 
