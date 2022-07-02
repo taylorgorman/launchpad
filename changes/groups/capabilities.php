@@ -7,9 +7,13 @@ function capabilities() {
     'title' => 'Capabilities',
     'changes' => [
       [
-        'title' => UNSUPPORTED . 'Edit Theme options: Editors and up (default is Administrators)',
+        'title' => 'Editors can edit theme options',
         'name' => 'access-theme-options',
         'execute' => function () {
+
+          $role = get_role( 'editor' );
+          $role->add_cap( 'edit_theme_options' );
+
         },
       ],
       [
