@@ -33,8 +33,13 @@ add_action( 'activated_plugin', function(){
 /**
  * Import everything
  */
+// Helps us easily render WP Admin UI
 require_once 'vendor/make-admin/index.php';
+// Very basic data about this plugin. Title, name, version.
 require_once 'setup/constants.php';
+// The meat and potatoes. Imports the actual settings and how to execute them.
 require_once 'changes/definitions.php';
+// Executes changes that are checked in the admin
 require_once 'changes/executions.php';
+// Renders the WP Admin page with the checkboxes
 require_once 'admin-ui/settings.php';
