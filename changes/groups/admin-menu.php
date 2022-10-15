@@ -7,8 +7,8 @@ function admin_menu() {
     'title' => 'Admin Menu',
     'changes' => [
       [
-        'name' => 'remove-theme-editor',
         'title' => 'Remove Theme File Editor',
+        'name' => 'remove-theme-editor',
         'execute' => function () {
   
           add_action( 'admin_menu', function () {
@@ -21,8 +21,8 @@ function admin_menu() {
         },
       ],
       [
-        'name' => 'remove-plugin-editor',
         'title' => 'Remove Plugin File Editor',
+        'name' => 'remove-plugin-editor',
         'execute' => function () {
   
           add_action( 'admin_menu', function () {
@@ -47,6 +47,32 @@ function admin_menu() {
         
             $menu[50] = $menu[$media_key];
             unset( $menu[$media_key] );
+          }, 999 );
+          
+        },
+      ],
+      [
+        'title' => 'Move Pages above Posts',
+        'name' => 'move-pages-above',
+        'execute' => function () {
+  
+          add_action( 'admin_menu', function () {
+            global $menu;
+            // echo '<pre style="padding-left:13em">'; print_r($menu); echo '</pre>';
+            foreach ( $menu as $key => $item ) {
+              if ( in_array( 'Pages', $item ) ) {
+                $pages_key = $key;
+                $pages_item = $item;
+              }
+              if ( in_array( 'Posts', $item ) ) {
+                $posts_key = $key;
+                $posts_item = $item;
+              }
+            }
+
+            unset( $menu[$pages_key], $menu[$posts_key] );
+            $menu[5] = $pages_item;
+            $menu[6] = $posts_item;
           }, 999 );
           
         },

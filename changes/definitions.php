@@ -1,4 +1,8 @@
 <?php
+/**
+ * This file doesn't do anything,
+ * it's just a hub for importing and exporting all the code-split changes.
+ */
 
 namespace Launchpad\Changes;
 
