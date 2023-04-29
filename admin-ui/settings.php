@@ -4,9 +4,10 @@
  * @see https://developer.wordpress.org/plugins/settings/custom-settings-page/
  */
 
-namespace Launchpad\Settings;
+namespace Launchpad\AdminUi;
+use Launchpad\Changes;
 use Launchpad\Setup;
-use Utilities\MakeAdmin;
+use Vendor\MakeAdmin;
 
 /**
  * Convert changeset groups to MakeAdmin API
@@ -19,7 +20,7 @@ $fields = array_map( function ( $change_group ) {
       return $change['title'];
     }, $change_group['changes'] ),
   ];
-}, Setup\changes() );
+}, Changes\definitions() );
 
 /**
  * Create settings admin page
@@ -31,9 +32,7 @@ MakeAdmin\page( [
   'sections' => [
     [
       'title' => Setup\TITLE,
-      'content' => 'Section content is a string',
       'fields' => $fields,
     ],
   ],
 ] );
-

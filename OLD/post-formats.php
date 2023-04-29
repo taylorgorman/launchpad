@@ -1,4 +1,8 @@
 <?php
+/**
+ * Turn on post formats.
+ * Seems like this already happens by default? So we would turn them off, then?
+ */
 
 // Post formats checkboxes on Settings/Writing
 //
