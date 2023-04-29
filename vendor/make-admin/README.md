@@ -187,7 +187,7 @@ add_settings_field(
 
 ## Frequent questions
 
-### Uh, why not [ACF](https://www.advancedcustomfields.com/) / [Carbon Fields](https://carbonfields.net/) / insert other project here?
+### Uh, why not [ACF](https://www.advancedcustomfields.com/) / [Carbon Fields](https://carbonfields.net/) / {{insert other project here}}?
 You know, I did, at first. And you could too, go for it! Reinventing the wheel is rarely a good idea. However, none of them did everything I needed. Yes, ACF does everything and more, _but_ it requires the ACF plugin, naturally. This package lets our plugins stand on their own, and also follow WordPress style guidelines to the letter.
 
 ### Why you changin' all these terms?
