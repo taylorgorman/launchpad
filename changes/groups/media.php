@@ -20,7 +20,7 @@ function media() {
         },
       ],
       [
-        'title' => 'Show hidden image sizes in Settings / Media',
+        'title' => UNTESTED . 'Show hidden image sizes in Settings / Media',
         'name' => 'show-hidden-image-sizes',
         'execute' => function () {
 
