@@ -18,12 +18,23 @@ function content() {
         },
       ],
       [
-        'title' => 'Pages have comments',
+        'title' => UNTESTED . 'Pages have comments',
         'name' => 'page-comments',
         'execute' => function () {
 
           add_action( 'init', function () {
             add_post_type_support( 'page', 'comments' );
+          } );
+          
+        },
+      ],
+      [
+        'title' => UNTESTED . 'Excerpts can have shortcodes',
+        'name' => 'excerpt-shortcodes',
+        'execute' => function () {
+
+          add_action( 'init', function () {
+            add_filter( 'the_excerpt', 'do_shortcode' );
           } );
           
         },
