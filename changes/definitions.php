@@ -14,6 +14,7 @@ require_once 'groups/capabilities.php';
 require_once 'groups/content.php';
 require_once 'groups/media.php';
 require_once 'groups/users.php';
+require_once 'groups/co_authors_plus.php';
 
 /**
  * Changesets inside named groups
@@ -28,5 +29,6 @@ function definitions() {
     content(),
     media(),
     users(),
+    co_authors_plus(),
   ];
 }
