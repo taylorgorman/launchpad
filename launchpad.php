@@ -34,6 +34,8 @@ add_action( 'activated_plugin', function(){
  * Import everything
  */
 // Helps us easily render WP Admin UI
+// Yes, I'm hijacking Composer's "vendor" folder.
+// I'll stop doing that in a later update after MakeAdmin gets a Composer package.
 require_once 'vendor/make-admin/index.php';
 // Very basic data about this plugin. Title, name, version.
 require_once 'setup/constants.php';
