@@ -18,6 +18,17 @@ function content() {
         },
       ],
       [
+        'title' => 'Pages have comments',
+        'name' => 'page-comments',
+        'execute' => function () {
+
+          add_action( 'init', function () {
+            add_post_type_support( 'page', 'comments' );
+          } );
+          
+        },
+      ],
+      [
         'title' => 'Set generated excerpt length to 25 words (default is 55)',
         'name' => 'excerpt-length',
         'execute' => function () {
