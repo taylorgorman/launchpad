@@ -4,10 +4,13 @@ namespace Launchpad\Changes;
 use Launchpad\Setup;
 
 // Get data
-$data = get_option( Setup\NAME );
+$data = get_option( Setup\NAME ) ?: [];
 
 // For each change group..
 foreach ( definitions() as $change_group ) {
+  // Required
+  if ( empty( $data[ sanitize_title( $change_group['title'] ) ] ) )
+    continue;
   // Get group data
   $group_data = $data[ sanitize_title( $change_group['title'] ) ];
   // If we don't even have group data, don't bother

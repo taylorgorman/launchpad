@@ -21,6 +21,28 @@ namespace Vendor\MakeAdmin;
 */
 function page( array $page = [] ) {
   /**
+   * Required
+   */
+  if (
+    empty( $page['title'] )
+    || empty( $page['capability'] )
+  )
+    return; // change this to a visible useful error message
+
+  /**
+   * Defaults and fallbacks
+   */
+  $page = array_merge( [
+    'parent' => null,
+    'menu_title' => null,
+    'menu_slug' => null,
+    'sections_group' => null,
+    'options_group' => null,
+    'position' => null,
+    'sections' => null,
+  ], $page );
+  
+  /**
    * Allow easy aliases for WordPress menu pages via title instead of file name
    */
   $wp_menu_titles = [
@@ -121,6 +143,28 @@ function page( array $page = [] ) {
 */
 function section( array $section = [] ) {
   /**
+   * Required
+   */
+  if (
+    empty( $section['title'] )
+  )
+    return; // change this to a visible useful error message
+
+  /**
+   * Defaults and fallbacks
+   */
+  $section = array_merge( [
+    'id' => null,
+    'options_group' => null,
+    'option_name' => null,
+    'option_args' => null,
+    'sections_group' => null,
+    'page' => null,
+    'content' => null,
+    'callback' => null,
+  ], $section );
+
+  /**
    * Fallbacks
    */
   if ( is_string( $section['content'] ) ) {
@@ -193,9 +237,22 @@ function section( array $section = [] ) {
 */
 function field( array $field = [] ) {
   /**
-   * Fallbacks
+   * Required
    */
-  $field['id'] = $field['id'] ?: sanitize_title( $field['label'] );
+  if (
+    empty( $field['type'] )
+    || empty( $field['label'] )
+  )
+    return; // change this to a visible useful error message
+
+  /**
+   * Defaults and fallbacks
+   */
+  $field = array_merge( [
+    'id' => sanitize_title( $field['label'] ),
+    'description' => null,
+    'callback' => null,
+  ], $field );
 
   add_action( 'admin_init', function () use ( $field ) {
     /**
