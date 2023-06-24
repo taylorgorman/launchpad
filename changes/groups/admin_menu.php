@@ -9,6 +9,7 @@ function admin_menu() {
       [
         'title' => 'Remove Theme File Editor',
         'name' => 'remove-theme-editor',
+        'default' => true,
         'execute' => function () {
   
           add_action( 'admin_menu', function () {
@@ -23,6 +24,7 @@ function admin_menu() {
       [
         'title' => 'Remove Plugin File Editor',
         'name' => 'remove-plugin-editor',
+        'default' => true,
         'execute' => function () {
   
           add_action( 'admin_menu', function () {
@@ -37,6 +39,7 @@ function admin_menu() {
       [
         'title' => 'Move Media below post types and Comments',
         'name' => 'move-media-below',
+        'default' => true,
         'execute' => function () {
   
           add_action( 'admin_menu', function () {

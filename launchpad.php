@@ -11,14 +11,42 @@
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+use Launchpad\Changes;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) die;
 
+// On activation and deactivation
+register_activation_hook( __FILE__, function () {
+
+	// Save default Launchpad settings upon activation
+	$option_value = array_reduce( Changes\definitions(), function ( $wp_option, $change_group ) {
+		// Change title case to kebab-case
+		$group_name = sanitize_title( $change_group['title'] );
+		// Reformat array to look like value that MakeAdmin puts in wp_options table
+		$group_changes = array_map( function ( $change ) {
+			return empty( $change['default'] ) ? null : $change['title'];
+		}, $change_group['changes'] );
+		// array_filter clears empty values
+		$wp_option[$group_name] = array_filter( $group_changes );
+		return $wp_option;
+	}, [] );
+	// Save in wp_options table
+	add_option( 'launchpad', $option_value );
+
+} );
+
+register_deactivation_hook( __FILE__, function () {
+	// Delete settings upon deactivation
+	// Should we not do this? Somehow ask the user if they want it or not?
+	delete_option( 'launchpad' );
+} );
+
 // Load this plugin first, so its resources are available to everyone.
-add_action( 'activated_plugin', function(){
+add_action( 'activated_plugin', function (){
 
 	$plugin_url = plugin_basename( __FILE__ );
-	$active_plugins = get_option( 'active_plugins', array() );
+	$active_plugins = get_option( 'active_plugins', [] );
 	$key = array_search( $plugin_url, $active_plugins );
 
 	if ( ! $key )
