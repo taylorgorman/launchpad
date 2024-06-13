@@ -57,6 +57,7 @@ function admin_menu() {
       [
         'title' => 'Move Pages above Posts',
         'name' => 'move-pages-above',
+        'default' => true,
         'execute' => function () {
   
           add_action( 'admin_menu', function () {
